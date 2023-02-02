@@ -57,7 +57,7 @@ function SingalPost() {
         
        
         <Card body className="m-3"><i class="fas fa-thumbs-up"></i> &nbsp; </Card>
-        <NavLink to="/Dashboard/Comments"> 
+        <NavLink style={{color:"black",textDecoration:"none"}} to="/Dashboard/Comments"> 
         <Card body className="m-3"><i class="fas fa-comment"></i> &nbsp; </Card>
         </NavLink>
         <Card body className="m-3"><i class="fas fa-share-alt"></i> &nbsp; </Card>
