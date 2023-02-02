@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
+import {NavLink} from 'react-router-dom'
 
 function SingalPost() {
   const{ id }= useParams()
@@ -56,7 +57,9 @@ function SingalPost() {
         
        
         <Card body className="m-3"><i class="fas fa-thumbs-up"></i> &nbsp; </Card>
+        <NavLink to="/Dashboard/Comments"> 
         <Card body className="m-3"><i class="fas fa-comment"></i> &nbsp; </Card>
+        </NavLink>
         <Card body className="m-3"><i class="fas fa-share-alt"></i> &nbsp; </Card>
        
         </Col>
