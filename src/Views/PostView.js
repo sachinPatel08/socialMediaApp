@@ -26,14 +26,25 @@ const [open, setOpen] = useState(false);
           {content}
         </Card.Text>
         
-        <Button  styled={{border:"none"}} variant="outline-dark" size="sm"><i class="fas fa-thumbs-up"></i></Button>
-        
-        <Popup trigger={<Button className="m-2"  styled={{border:"none"}} variant="outline-dark" size="sm"><i class="fas fa-comment"></i></Button>} position="right center">
-    <div className="popup">
-      <input type="txt"/>
-      <input type="submit"/>
+        <Button  styled={{border:"none"}}  variant="outline-secondary" size="sm"><i class="fas fa-thumbs-up"></i></Button>
+        <Button className="m-3" variant="outline-secondary" size="sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-comment"></i></Button>{' '}
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text"  placeholder="enter text." />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button  type="button" class="btn btn-primary">Post</button>
+      </div>
     </div>
-  </Popup>
+  </div>
+</div>
       </Card.Body>
     </Card>
     </div>
@@ -41,6 +52,9 @@ const [open, setOpen] = useState(false);
     </Main>
   )
 }
+
+
+
 const Main = styled.div`
 .post-card{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
