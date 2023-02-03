@@ -35,9 +35,9 @@ const [followers,setFollowers] = useState([])
             'token':token[0]
           },
     }).then(res=>res.json()).then(data=>console.log("user deleted.."))
-    data()
+    data();
 } 
-   data()
+   data();
 }
 
 

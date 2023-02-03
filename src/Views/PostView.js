@@ -8,6 +8,7 @@ import Popup from 'reactjs-popup';
 function PostView({val}) {
 
     const {id,title,content}=val
+    console.log(val)
 const [open, setOpen] = useState(false);
 
   return (

@@ -37,6 +37,7 @@ const setUser = (result) =>{
   if(result.token){
     localStorage.setItem("token", JSON.stringify(token) );
     // localStorage.setItem("token", token );
+  
     navigate("/Dashboard");
   }else{
     alert("invalid username or password")
