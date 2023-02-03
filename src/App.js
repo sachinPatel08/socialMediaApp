@@ -19,7 +19,7 @@ const Routers = () => {
     children: [
       { path: 'Post', element: <Post/> },
       { path: 'Followers', element: <Followers/> },
-      { path: 'Comments', element: <Comments/> },
+      { path: 'Comments/:id', element: <Comments/> },
       { path: 'Post/:id', element: <SingalPost/> },
     ],}
     
