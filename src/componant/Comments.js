@@ -22,7 +22,7 @@ useEffect(()=>{
 
           },  
     }).then(res => res.json())
-    .then(data => setComment(data))
+    .then(data => setComment(data.reverse()))
 })
 // push comments
 const addComment = (e)=>{

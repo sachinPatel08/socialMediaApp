@@ -4,18 +4,23 @@ import styled from 'styled-components';
 import Card from 'react-bootstrap/Card';
 import {NavLink} from 'react-router-dom'
 import Popup from 'reactjs-popup';
+import {  ListGroup } from "react-bootstrap"
 
 function PostView({val}) {
 
     const {id,title,content}=val
-    console.log(val)
-const [open, setOpen] = useState(false);
+    console.log(val.User.id)
+
 
   return (
     <Main>
     <div >
     
     <Card className='post-card' style={{ width: '18rem' ,height:"auto",margin:"15px" }}>
+      <NavLink style={{color:"black",textDecoration:"none"}} to={`/Dashboard/User/${val.User.id}`}>
+      {/* if / use then  open new link otherwise open existing url page */}
+    <Card.Header>{val.User.userName}</Card.Header>
+    </NavLink>
     <NavLink className="txt" to={`${id}`}>
       <Card.Img variant="top" src="https://source.unsplash.com/random/200x150" />
      </NavLink>
@@ -36,7 +41,7 @@ const [open, setOpen] = useState(false);
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text"  placeholder="enter text." />
+        <input type="text" style={{border:"none",width:"100%"}}  placeholder="enter text." />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

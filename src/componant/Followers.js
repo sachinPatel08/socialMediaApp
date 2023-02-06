@@ -22,7 +22,7 @@ const [followers,setFollowers] = useState([])
     }
  useEffect(()=>{
     data()
- },[])
+ })
 
  const unfollow =(followerId)=>{
     const Confirm = window.confirm("are you sure?")

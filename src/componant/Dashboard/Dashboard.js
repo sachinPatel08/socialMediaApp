@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Post from '../Post'
 import Sidebar from "./Sidebar";
 import DashNav from "./DashNav";
-import MainDiv from './MainDiv';
+import MainDiv from "./MainDiv";
 
 const RootStyle = styled("div")({
   display: "flex",
@@ -11,18 +10,16 @@ const RootStyle = styled("div")({
   overflow: "hidden",
 });
 
-const Dashboard =()=> {
+const Dashboard = () => {
   return (
     <>
-    <RootStyle>
-        <Sidebar/>
-        <DashNav/>
-        <MainDiv/>
-    </RootStyle>
-    
-
+      <RootStyle>
+        <Sidebar />
+        <DashNav />
+        <MainDiv />
+      </RootStyle>
     </>
   );
-}
+};
 
 export default Dashboard;

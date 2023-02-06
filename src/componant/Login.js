@@ -26,6 +26,7 @@ const loginUser = (e)=>{
     resp.json()
     .then((result)=>{
       setUser(result)
+      console.log(result)
     })
   })
 }
