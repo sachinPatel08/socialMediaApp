@@ -22,12 +22,13 @@ const Sidebar = ()=>{
     <NavLink className="txt" to="/Dashboard/Followers">
            <div className="list"><i class="fa fa-users" aria-hidden="true"></i> &nbsp; Followers</div>
     </NavLink>
-    <NavLink className="txt" to="/Dashboard/Comments">
+    {/* <NavLink className="txt" to="/Dashboard/Comments">
            <div className="list"><i class="fa fa-comments" aria-hidden="true"></i> &nbsp; Comments</div>
-    </NavLink>
+    </NavLink> */}
     <NavLink className="txt" to="/Dashboard/setting">
            <div className="list"><i class="fa-solid fa-gear"></i> &nbsp; Setting</div>
     </NavLink>
+   
     <NavLink className="txt" to="/Dashboard/Logout">
            <div className="list"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Logout</div>
     </NavLink>

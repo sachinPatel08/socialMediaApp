@@ -12,6 +12,8 @@ import Followers from './componant/Followers';
 import Login from './componant/Login';
 import Comments from './componant/Comments'
 import SingalPost from './Views/SingalPost';
+import SingalUser from './Views/SingalUser';
+import Logout from './componant/Logout'
 const Routers = () => {
   let routes = useRoutes([
     { path: "/", element: <Home/> },
@@ -21,6 +23,8 @@ const Routers = () => {
       { path: 'Followers', element: <Followers/> },
       { path: 'Comments/:id', element: <Comments/> },
       { path: 'Post/:id', element: <SingalPost/> },
+      { path: 'User/:id', element: <SingalUser/> },
+      {path: 'Logout' , element:<Logout/>}
     ],}
     
   ]);
