@@ -4,11 +4,17 @@ import globalData from "../context/CreateContext";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
+import Modal from 'react-bootstrap/Modal';
+
 const Comments = () => {
   const { id } = useParams();
   const token = useContext(globalData);
   const [comment, setComment] = useState([]);
   const [text, settext] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   // fetch data
   useEffect(() => {
@@ -41,6 +47,7 @@ const Comments = () => {
         console.log(result);
       });
     });
+    setShow(false)
   };
   //
   return (
@@ -48,63 +55,39 @@ const Comments = () => {
       <Button
         className="m-3"
         variant="outline-secondary"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
+        onClick={handleShow}
       >
         Comments
-      </Button>{" "}
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
+      </Button>
+     
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
       >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
-                Comment
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <input
-                type="text"
-                onChange={(e) => {
-                  settext(e.target.value);
-                }}
-                value={text}
-                style={{ border: "none", width: "100%" }}
-                placeholder="enter text."
-              />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                onClick={addComment}
-                type="button"
-                className="btn btn-primary"
-              >
-                Post
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <Modal.Header closeButton>
+          <Modal.Title>Comment</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <input
+        type="text"
+        onChange={(e) => {
+          settext(e.target.value);
+        }}
+        value={text}
+        style={{ border: "none", width: "100%" }}
+        placeholder="enter text."
+      />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button  variant="primary" onClick={addComment}>Comment</Button>
+        </Modal.Footer>
+      </Modal>
+
       {comment.map((e, i) => {
         return (
           <Card
@@ -145,3 +128,5 @@ const Main = styled.div`
   }
 `;
 export default Comments;
+
+

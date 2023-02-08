@@ -16,12 +16,12 @@ const SingalUser = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        token: token[0],
+        "token": token[0],
       },
     })
       .then((res) => res.json())
       .then((data) => setUserDetail(data));
-  });
+  },[]);
   // follow api
   const follow = () => {
     fetch(`http://localhost:5000/user/follow/${id}`, {
