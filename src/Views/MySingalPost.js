@@ -1,17 +1,14 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 import Popup from "reactjs-popup";
-import { ListGroup, Row, Col, Image } from "react-bootstrap";
-
-function PostView({ val }) {
-  const { id, title, content } = val;
+import { ListGroup, Button } from "react-bootstrap";
+const  MySingalPost = ({val}) => {
+    const { id ,title , content} = val;
   return (
     <Main>
-      <div>
-        <Card
+       <Card
           className="post-card"
           style={{ width: "18rem", height: "auto", margin: "15px" }}
         >
@@ -22,7 +19,7 @@ function PostView({ val }) {
             {/* if / use then  open new link otherwise open existing url page */}
             <Card.Header>{val.User.userName}</Card.Header>
           </NavLink>
-          <NavLink className="txt" to={`${id}`}>
+          <NavLink className="txt" to={`/Dashboard/Post/${id}`}>
             <Card.Img
               variant="top"
               src="https://source.unsplash.com/random/200x150"
@@ -93,18 +90,17 @@ function PostView({ val }) {
             </div>
           </Card.Body>
         </Card>
-      </div>
     </Main>
-  );
+  )
 }
-
 const Main = styled.div`
-  .post-card {
+.post-card {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   .txt {
     color: black;
     text-decoration: none;
   }
-`;
-export default PostView;
+`
+
+export default MySingalPost

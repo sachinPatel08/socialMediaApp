@@ -70,7 +70,7 @@ const SingalUser = () => {
         <div className="image">
           <img
             src="https://source.unsplash.com/random/200x150"
-            class="img-thumbnail"
+            className="img-thumbnail"
             alt="..."
           ></img>
         </div>
@@ -102,11 +102,11 @@ const SingalUser = () => {
 
             <Card.Text>
               <div style={{ color: "#f3da35" }}>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star-half-o"></i>
               </div>
             </Card.Text>
           </Card.Body>
@@ -114,36 +114,38 @@ const SingalUser = () => {
       </div>
       <div>
         <Card.Text className="postDetail">
-           <div>10<br></br>
+          <div>
+            10<br></br>
             <span>Posts</span>
-           </div>
-           <div>100<br></br>
+          </div>
+          <div>
+            100<br></br>
             <span>Follower</span>
-           </div>
-           <div>100<br></br>
+          </div>
+          <div>
+            100<br></br>
             <span>Following</span>
-           </div>
+          </div>
         </Card.Text>
         <div>
-        <Card className="card-2">
-          <Card.Text style={{display:"flex"}}>
-            <div style={{padding:"10px"}} >
-            <p>id:</p>
-            <p>Username:</p>
-            <p>Email:</p>
-            <p>CreatedAt:</p>
-            </div>
-            <div style={{padding:"10px"}}>
-               <p>{userDetail.id}</p>
-               <p style={{fontWeight:"bold"}}>{userDetail.userName}</p>
-               <p style={{color:"blue"}}>{userDetail.email}</p>
-               <p>{userDetail.createdAt}</p>
-            </div>
-          </Card.Text>
-        </Card>
+          <Card className="card-2">
+            <Card.Text style={{ display: "flex" }}>
+              <div style={{ padding: "10px" }}>
+                <p>id:</p>
+                <p>Username:</p>
+                <p>Email:</p>
+                <p>CreatedAt:</p>
+              </div>
+              <div style={{ padding: "10px" }}>
+                <p>{userDetail.id}</p>
+                <p style={{ fontWeight: "bold" }}>{userDetail.userName}</p>
+                <p style={{ color: "blue" }}>{userDetail.email}</p>
+                <p>{userDetail.createdAt}</p>
+              </div>
+            </Card.Text>
+          </Card>
+        </div>
       </div>
-      </div>
-      
     </Main>
   );
 };
@@ -165,19 +167,18 @@ const Main = styled.div`
   }
   .card-2 {
     margin-top: 100px;
-    margin-left:15px;
-    border:none;
+    margin-left: 15px;
+    border: none;
   }
-  .postDetail{
-   display:flex;
-   margin-top:100px;
-   padding:10px;
+  .postDetail {
+    display: flex;
+    margin-top: 100px;
+    padding: 10px;
 
-div{
-    font-weight:bold;
-    padding:10px;
-}
-
+    div {
+      font-weight: bold;
+      padding: 10px;
+    }
   }
 `;
 export default SingalUser;
