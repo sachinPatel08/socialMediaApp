@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import DashNav from "./DashNav";
@@ -7,7 +7,6 @@ import MainDiv from "./MainDiv";
 const RootStyle = styled("div")({
   display: "flex",
   minHeight: "100%",
-  overflow: "hidden",
 });
 
 const Dashboard = () => {
