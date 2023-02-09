@@ -4,15 +4,19 @@ import Button from "react-bootstrap/Button";
 import globalData from "../context/CreateContext";
 import MyPostView from "../Views/MyPostView";
 import styled from "styled-components";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 const Posts = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [allPost, setAllPost] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [post, setPost] = useState([]);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const token = useContext(globalData);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/user/allPost`, {
@@ -26,7 +30,8 @@ const Posts = () => {
       .then((data) => setAllPost(data.reverse()));
   });
 
-  const PushPost = () => {
+  const PushPost = (e) => {
+    e.preventDefault()
     const data = { title, content };
     fetch("http://localhost:5000/user/createPost", {
       method: "POST",
@@ -39,86 +44,57 @@ const Posts = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+    setShow(!show);
   };
   return (
     <>
       <Div>
-        <button
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          data-bs-whatever="@mdo"
-          className="btn btn-dark"
-        >
-          Post
+        <button type="button" onClick={handleShow} className="btn btn-dark">
+        <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </Div>
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                New Post
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="recipient-name" className="col-form-label">
-                    Title:
-                  </label>
-                  <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="form-control"
-                    id="recipient-name"
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="message-text" className="col-form-label">
-                    Content:
-                  </label>
-                  <textarea
-                    className="form-control"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    id="message-text"
-                  ></textarea>
-                </div>
-              </form>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                onClick={PushPost}
-                type="button"
-                className="btn btn-primary"
-              >
-                Create Post
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <label for="recipient-name" class="col-form-label">
+                Title:
+              </label>
+              <input 
+              type="text" 
+              className="form-control" 
+              id="recipient-name"
+              value={title}
+              onChange={(e)=>setTitle(e.target.value)} />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <label for="recipient-name" class="col-form-label">
+                Body:
+              </label>
+              <textarea 
+              type="textarea" 
+              className="form-control" 
+              id="recipient-name"
+              value={content}
+                  onChange={(e)=>setContent(e.target.value)}/>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={PushPost}>
+            Post
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {allPost.map((data, i) => {
         return <PostView key={data.id} val={data} />;
       })}

@@ -16,7 +16,7 @@ const DashNav = () => {
       <div>
         <Navbar bg="dark" variant="dark" className="navbar-expand-lg">
           <Container>
-            <Navbar.Brand href="#home">{`Welcome Back ${token[1]},`}</Navbar.Brand>
+            <Navbar.Brand style={{textTransform: "capitalize"}} href="#home">{`Welcome Back ${token[1]},`}</Navbar.Brand>
             {/* <Form className="d-flex">
             <Form.Control
               type="search"
@@ -36,8 +36,8 @@ const DashNav = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i className="fa-solid fa-user-large"></i>
-                  {token[1]}
+                  <i  className="fa-solid fa-user-large"> </i>
+                  <span style={{textTransform: "capitalize"}}>&nbsp;{token[1]}</span>                 
                 </button>
                 <ul
                   className="dropdown-menu drp-con"
@@ -46,7 +46,7 @@ const DashNav = () => {
                   <NavLink style={{textDecoration: "none"}} to="/Dashboard/myPost">
                     <li className="dropdown-item">My Post</li>
                   </NavLink>
-                  <NavLink style={{textDecoration: "none"}} to="/Dashboard/myPost">
+                  <NavLink style={{textDecoration: "none"}} to="/Dashboard">
                     <li className="dropdown-item">Account</li>
                   </NavLink>
                   <NavLink style={{textDecoration: "none"}} to="/Dashboard/Logout">

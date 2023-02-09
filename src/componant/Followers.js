@@ -8,7 +8,7 @@ const Followers = () => {
   const token = useContext(globalData);
   const [followers, setFollowers] = useState([]);
 
-  const data = () => {
+  useEffect(() => {
     fetch(`http://localhost:5000/user/showFollower`, {
       method: "GET",
       headers: {
@@ -19,9 +19,6 @@ const Followers = () => {
     })
       .then((res) => res.json())
       .then((data) => setFollowers(data));
-  };
-  useEffect(() => {
-    data();
   });
 
   const unfollow = (followerId) => {
@@ -37,9 +34,9 @@ const Followers = () => {
       })
         .then((res) => res.json())
         .then((data) => console.log("user deleted.."));
-      data();
+     
     }
-    data();
+    
   };
 
   return (

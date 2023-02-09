@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import {Form,InputGroup} from 'react-bootstrap';
 import { CAlert } from '@coreui/react';
-
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
-    
+    const navigate = useNavigate()
     const [userName,setUser] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPass] = useState("")
@@ -29,7 +29,7 @@ const Register = () => {
           console.log("result",result)
         })
       })
-      
+  
     }
 
 
