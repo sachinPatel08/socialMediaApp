@@ -9,19 +9,7 @@ const SingalUser = () => {
   const [userDetail, setUserDetail] = useState([]);
   const [check, setCheck] = useState();
   console.log(check);
-  // api call
-  useEffect(() => {
-    fetch(`http://localhost:5000/user/show/${id}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "token": token[0],
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setUserDetail(data));
-  },[]);
+
   // follow api
   const follow = () => {
     fetch(`http://localhost:5000/user/follow/${id}`, {
@@ -47,6 +35,19 @@ const SingalUser = () => {
     })
       .then((res) => res.json())
       .then((data) => setCheck(data));
+  });
+  // api call
+  useEffect(() => {
+    fetch(`http://localhost:5000/user/show/${id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        token: token[0],
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUserDetail(data));
   });
   //unfollow
   const unfollow = (followerId) => {

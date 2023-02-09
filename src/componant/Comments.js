@@ -4,8 +4,8 @@ import globalData from "../context/CreateContext";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
-import Modal from 'react-bootstrap/Modal';
-
+import Modal from "react-bootstrap/Modal";
+import { NavLink } from "react-router-dom";
 const Comments = () => {
   const { id } = useParams();
   const token = useContext(globalData);
@@ -47,19 +47,16 @@ const Comments = () => {
         console.log(result);
       });
     });
-    setShow(false)
+    setShow(false);
   };
   //
+
   return (
     <Main>
-      <Button
-        className="m-3"
-        variant="outline-secondary"
-        onClick={handleShow}
-      >
+      <Button className="m-3" variant="outline-secondary" onClick={handleShow}>
         Comments
       </Button>
-     
+
       <Modal
         show={show}
         onHide={handleClose}
@@ -70,21 +67,23 @@ const Comments = () => {
           <Modal.Title>Comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <input
-        type="text"
-        onChange={(e) => {
-          settext(e.target.value);
-        }}
-        value={text}
-        style={{ border: "none", width: "100%" }}
-        placeholder="enter text."
-      />
+          <input
+            type="text"
+            onChange={(e) => {
+              settext(e.target.value);
+            }}
+            value={text}
+            style={{ border: "none", width: "100%" }}
+            placeholder="enter text."
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button  variant="primary" onClick={addComment}>Comment</Button>
+          <Button variant="primary" onClick={addComment}>
+            Comment
+          </Button>
         </Modal.Footer>
       </Modal>
 
@@ -99,8 +98,15 @@ const Comments = () => {
               <div>{e.User.userName}</div>
               <div>
                 <i className="fas fa-heart"></i>
+                <NavLink
+                  style={{ color: "black", marginLeft: "10px" }}
+                  to={`/Dashboard/comment/${e.id}`}
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </NavLink>
               </div>
             </Card.Header>
+
             <Card.Body>
               <blockquote className="blockquote mb-0">
                 <p>{e.text}</p>
@@ -128,5 +134,3 @@ const Main = styled.div`
   }
 `;
 export default Comments;
-
-

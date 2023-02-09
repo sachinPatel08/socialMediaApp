@@ -18,12 +18,11 @@ function SingalPost() {
   const token = useContext(globalData);
   const [postData, setPostData] = useState({});
   const [user, setUser] = useState({});
-  const [title,setTitle] = useState("")
-  const [content ,setContent] = useState("")
-const [show,setShow] = useState(false)
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
 
   useEffect(() => {
     fetch(`http://localhost:5000/user/getPost/${id}`, {
@@ -37,6 +36,7 @@ const [show,setShow] = useState(false)
       .then((res) => res.json())
       .then((data) => setPostData(data));
   });
+
   useEffect(() => {
     fetch(`http://localhost:5000/user/getUser`, {
       method: "GET",
@@ -48,7 +48,7 @@ const [show,setShow] = useState(false)
     })
       .then((res) => res.json())
       .then((data) => setUser(data));
-  },[]);
+  }, []);
 
   const deletPost = () => {
     const apply = window.confirm("are you sure?");
@@ -68,20 +68,20 @@ const [show,setShow] = useState(false)
     }
   };
 
-  const updatePost = ()=>{
-    fetch(`http://localhost:5000/user/updatePost/${id}`,{
-      method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          token: token[0],
-        },
-        body:JSON.stringify({title,content})
+  const updatePost = () => {
+    fetch(`http://localhost:5000/user/updatePost/${id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        token: token[0],
+      },
+      body: JSON.stringify({ title, content }),
     })
-    .then(res=>res.json())
-    .then(data=>console.log(data))
+      .then((res) => res.json())
+      .then((data) => console.log(data));
     setShow(!show);
-  }
+  };
   return (
     <Main>
       <Container>
@@ -119,11 +119,8 @@ const [show,setShow] = useState(false)
                   {postData.userId === user.id ? (
                     <>
                       <Card body className="m-3">
-                        <i
-                          onClick={deletPost}
-                          class="fa fa-trash"
-                          aria-hidden="true"
-                        ></i>
+                        
+                        <i onClick={deletPost} class="fa fa-trash" aria-hidden="true"></i>
                       </Card>
                       <Card body className="m-3">
                         <i
@@ -132,53 +129,64 @@ const [show,setShow] = useState(false)
                           aria-hidden="true"
                         ></i>
                         <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Update post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <label for="recipient-name" class="col-form-label">
-                Title:
-              </label>
-              <input 
-              type="text" 
-              className="form-control" 
-              id="recipient-name"
-              value={title}
-              onChange={(e)=>setTitle(e.target.value)} />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <label for="recipient-name" class="col-form-label">
-                Body:
-              </label>
-              <textarea 
-              type="textarea" 
-              className="form-control" 
-              id="recipient-name"
-              value={content}
-                  onChange={(e)=>setContent(e.target.value)}/>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={updatePost}>
-            Update
-          </Button>
-        </Modal.Footer>
-      </Modal>
+                          <Modal.Header closeButton>
+                            <Modal.Title>Update post</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+                            <Form>
+                              <Form.Group
+                                className="mb-3"
+                                controlId="exampleForm.ControlInput1"
+                              >
+                                <label
+                                  for="recipient-name"
+                                  class="col-form-label"
+                                >
+                                  Title:
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="recipient-name"
+                                  value={title}
+                                  onChange={(e) => setTitle(e.target.value)}
+                                />
+                              </Form.Group>
+                              <Form.Group
+                                className="mb-3"
+                                controlId="exampleForm.ControlTextarea1"
+                              >
+                                <label
+                                  for="recipient-name"
+                                  class="col-form-label"
+                                >
+                                  Body:
+                                </label>
+                                <textarea
+                                  type="textarea"
+                                  className="form-control"
+                                  id="recipient-name"
+                                  value={content}
+                                  onChange={(e) => setContent(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Form>
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                              Close
+                            </Button>
+                            <Button variant="primary" onClick={updatePost}>
+                              Update
+                            </Button>
+                          </Modal.Footer>
+                        </Modal>
                       </Card>
                     </>
                   ) : (
                     "not"
                   )}
-                  {/* <h2>{post.User.id}</h2> */}
+                  
                 </Col>
               </Row>
             </Col>

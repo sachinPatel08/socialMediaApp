@@ -46,7 +46,7 @@ const DashNav = () => {
                   <NavLink style={{textDecoration: "none"}} to="/Dashboard/myPost">
                     <li className="dropdown-item">My Post</li>
                   </NavLink>
-                  <NavLink style={{textDecoration: "none"}} to="/Dashboard/myPost">
+                  <NavLink style={{textDecoration: "none"}} to="/Dashboard">
                     <li className="dropdown-item">Account</li>
                   </NavLink>
                   <NavLink style={{textDecoration: "none"}} to="/Dashboard/Logout">

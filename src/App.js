@@ -15,6 +15,7 @@ import SingalPost from "./Views/SingalPost";
 import SingalUser from "./Views/SingalUser";
 import Logout from "./componant/Logout";
 import MyPostView from "./Views/MyPostView";
+import SingalComment from "./Views/SingalComment";
 const Routers = () => {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
@@ -29,6 +30,7 @@ const Routers = () => {
         { path: "User/:id", element: <SingalUser /> },
         { path: "myPost", element: <MyPostView /> },
         { path: "Logout", element: <Logout /> },
+        { path: "comment/:id", element: <SingalComment /> },
       ],
     },
   ]);

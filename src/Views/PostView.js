@@ -85,7 +85,7 @@ function PostView({ val }) {
                       Close
                     </button>
                     <button type="button" className="btn btn-primary">
-                      Post
+                      Comment
                     </button>
                   </div>
                 </div>
