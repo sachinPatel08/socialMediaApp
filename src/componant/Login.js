@@ -30,10 +30,11 @@ const Login = () => {
   };
 
   const setUser = (result) => {
+    console.log("datdsyfd",result)
     const token = [];
     token.push(result.token);
     token.push(result.userName);
-    if (result.token) {
+    if (result.token  ) {
       localStorage.setItem("token", JSON.stringify(token));
       // localStorage.setItem("token", token );
 
@@ -42,7 +43,7 @@ const Login = () => {
       alert("invalid username or password");
     }
   };
-
+  
   return (
     <>
       <Form>

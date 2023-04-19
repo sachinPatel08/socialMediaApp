@@ -31,11 +31,7 @@ const Register = () => {
       })
   
     }
-
-
-
-
-
+    
   return (
     <>
      <Form>
